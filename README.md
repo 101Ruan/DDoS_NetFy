@@ -16,6 +16,6 @@ pip install sockets
 
 pip install time
 
-pip instalar colorama
+pip install colorama
 
-pip instalar pyfiglet
+pip install pyfiglet

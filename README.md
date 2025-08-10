@@ -1,20 +1,20 @@
 🖥️ DDoS_NetFy
 
-O DDoS_NetFy é uma fermentação de ciberseguração para realizar ataques de negação de serviços (DoS) em sites, Utilizando sofetes em python
+O DDoS_NetFy é uma ferramenta de cybersegurança para realizar ataques de negação de serviços (DoS) em sites, Utilizando sockets em python
 
 🔽 INSTALAÇÃO (TERMUX)
 
-pkg instalar git
+pkg install git
 
 clone git https://github.com/101Ruan/DDoS_NetFy
 
 cd DDoS_NetFy
 
-pacote instalar python3
+pip install python3
 
-pip instalar sofetes
+pip install sockets
 
-tempo de instalação do pip
+pip install time
 
 pip instalar colorama
 

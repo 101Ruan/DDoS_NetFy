@@ -6,7 +6,7 @@ O DDoS_NetFy é uma ferramenta de cybersegurança para realizar ataques de nega�
 
 pkg install git
 
-clone git https://github.com/101Ruan/DDoS_NetFy
+git clone https://github.com/101Ruan/DDoS_NetFy
 
 cd DDoS_NetFy
 
@@ -19,3 +19,5 @@ pip install time
 pip install colorama
 
 pip install pyfiglet
+
+python3 DDoS_NetFy

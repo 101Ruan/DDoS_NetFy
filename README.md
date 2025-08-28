@@ -8,7 +8,7 @@ pkg install git
 
 pkg install python3
 
-git clone https://github.com/101Ruan/DDoS_NetFy
+git clone https://github.com/DarkZer010/DDoS_NetFy
 
 cd DDoS_NetFy
 

